@@ -8,7 +8,8 @@ class ChatWindow extends Component {
     static propTypes = {
         username: PropTypes.string.isRequired,
         messages: PropTypes.array.isRequired,
-        isDisabled: PropTypes.func.isRequired
+        isDisabled: PropTypes.func.isRequired,
+        addMessage: PropTypes.func.isRequired
     };
     render() {
         return (
@@ -20,6 +21,8 @@ class ChatWindow extends Component {
             />
             <AddMessage
                 isDisabled={this.props.isDisabled}
+                username={this.props.username}
+                addMessage={this.props.addMessage}
             />
         </div>
         );

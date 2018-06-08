@@ -11,13 +11,22 @@ The instructions are included in the `instructions.md` file.
 
 const users = [{ username: 'Amy' }, { username: 'John' }];
 
-const messages = [
-  { username: 'Amy', text: 'Hi, Jon!' },
-  { username: 'Amy', text: 'How are you?' },
-  { username: 'John', text: 'Hi, Amy! Good, you?' },
-];
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [
+        { username: 'Amy', text: 'Hi, Jon!' },
+        { username: 'Amy', text: 'How are you?' },
+        { username: 'John', text: 'Hi, Amy! Good, you?' },
+      ]
+    }
+  }
+  addMessage = (message) => {
+    this.setState({
+      messages: [...this.state.messages, message]
+    })
+  }
   /*
   If the user did not type anything, he/she should not be
   allowed to submit.
@@ -36,8 +45,9 @@ class App extends Component {
             <ChatWindow
               key={user.username}
               username={user.username}
-              messages={messages}
+              messages={this.state.messages}
               isDisabled={this.isDisabled}
+              addMessage={this.addMessage}
             />
           ))
         }
