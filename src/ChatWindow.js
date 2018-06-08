@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChatHeader from './ChatHeader';
 import ChatMessages from './ChatMessages';
+import AddMessage from './AddMessage';
 
 class ChatWindow extends Component {
     static propTypes = {
@@ -17,16 +18,9 @@ class ChatWindow extends Component {
                 messages={this.props.messages}
                 username={this.props.username}
             />
-            <div>
-              <form className="input-group">
-                <input type="text" className="form-control" placeholder="Enter your message..." />
-                <div className="input-group-append">
-                  <button className="btn submit-button" disabled={this.props.isDisabled()}>
-                    SEND
-                  </button>
-                </div>
-              </form>
-            </div>
+            <AddMessage
+                isDisabled={this.props.isDisabled}
+            />
         </div>
         );
     }
